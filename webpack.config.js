@@ -22,6 +22,9 @@ module.exports = {
     },
     devServer: {
         static: './dist',
+        watchFiles: [
+            'src/*'
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin({
