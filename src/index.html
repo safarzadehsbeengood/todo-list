@@ -7,14 +7,25 @@
 </head>
 <body>
     <div class="container">
-        <h1>Todo List</h1>
-        <form id="todo-form">
-            <input type="text" id="todo-input" placeholder="Add new todo">
-            <button type="submit">Add</button>
-        </form>
-        <ul id="todo-list">
-            <!-- todo items go here -->
-        </ul>
+        <header class="header">
+            <h1 class="title">Todo List</h1>
+        </header>
+        <div class="pg-container">
+            <div class="sidebar">
+                <button class="today">Today</button>
+                <button class="this-week">This Week</button>
+                <div class="projects">
+                    <h2 class="project-title">
+                        Projects
+                    </h2>
+                    <button class="add-btn" style="font-size: 30px; width: 100%;">+</button>
+                </div>
+            </div>
+            <div class="task-page">
+                <h2 class="curr-proj-name">Today</h2>
+                <div class="tasks-container"></div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

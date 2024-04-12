@@ -1,4 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
     display: flex;
     justify-content: center;
+    border: 1px solid;
+    background: var(--main);
+    font-family: "Poppins", monospace;
+    height: 98vh;
+}
+
+button {
+    font-family: "Poppins", monospace;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+:root {
+    --main: white;
+    --btn-hover: rgba(219, 219, 219, 0.5);
+    --header: rgb(60, 60, 60);
+}
+
+.container {
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    /* border: 1px solid green; */
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    background: var(--header);
+    color: white;
+}
+
+.pg-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+}
+
+.sidebar, .projects {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* justify-content: center; */
+    align-items: center;
+    /* width: 500px;    */
+    /* border: 1px solid; */
+}
+
+.sidebar button, .projects button {
+    width: 100%;
+    background: none;
+    border: none;
+    height: 70px;
+    font-size: 20px;
+}
+
+.sidebar button:hover {
+    background: var(--btn-hover);
+}
+
+.task-page {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    border: 1px solid;
+    height: 100%;
+    align-items: center;
 }

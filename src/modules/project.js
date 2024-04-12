@@ -49,6 +49,7 @@ export default function Project(name) {
     };
 
     return {
+        name,
         setName,
         getName,
         setTasks,
