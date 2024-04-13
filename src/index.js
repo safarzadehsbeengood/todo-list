@@ -1,9 +1,12 @@
 import './styles.css';
 import Task from './modules/task';
 import Project from './modules/project';
-import UI from './modules/ui';
 import List from './modules/list';
+import make_UI from './modules/ui';
 
-let tasks = [];
-
-tasks.push(Task())
+const UI = new make_UI();
+var projectList = new List();
+let testProject = new Project("test");
+testProject.addTask(new Task('do homework', '12-24-1992'));
+projectList.addProject(testProject);
+UI.loadTasks(testProject);

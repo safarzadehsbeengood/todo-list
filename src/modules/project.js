@@ -1,64 +1,70 @@
 import { toDate, isToday, isThisWeek, subDays } from 'date-fns';
 
-export default function Project(name) {
-    this.name = name;
-    this.tasks = [];
+export default class Project {
+    constructor(name) {
+        this.name = name;
+        this.tasks = [];
+    }
 
-    const setName = function(name) {
+    setName(name) {
         this.name = name;
     };
 
-    const getName = () => this.name;
+    getName() {
+        return this.name;
+    }
 
-    const setTasks = function(tasks) {
+    setTasks(tasks) {
         this.tasks = tasks;
     };
 
-    const getTasks = () => this.tasks;
+     getTasks() {
+        return this.tasks;
+     }
     
-    const findTask = function(task) {
-        return this.tasks.find((task) => task.getName() === task);
+     findTask(taskName) {
+        return this.tasks.find((task) => task.getName() === taskName);
     };
 
-    const contains = function(task) {
-        return this.tasks.some((task) => task.getName() === task);
+     contains(taskName) {
+        return this.tasks.some((task) => task.getName() === taskName);
     };
 
-    const addTask = function(newTask) {
+     addTask(newTask) {
         if (!this.tasks.find((task) => task.getName() === newTask.name)) {
             this.tasks.push(newTask);
         }
     };
 
-    const deleteTask = function(taskName) {
+     deleteTask(taskName) {
         this.tasks = this.tasks.filter((task) => task.name !== taskName);
     };
 
-    const getTasksToday = function() {
+     getTasksToday() {
         return this.tasks.filter((task) => {
             const taskDate = new Date(task.getFormattedDate());
             return isToday(toDate(taskDate));
         });
     };
 
-    const getTasksThisWeek = function() {
+     getTasksThisWeek() {
         return this.tasks.filter((task) => {
             const taskDate = new Date(task.getFormattedDate());
             return isThisWeek(subDays(toDate(taskDate), 1));
         });
     };
 
-    return {
-        name,
-        setName,
-        getName,
-        setTasks,
-        getTasks,
-        findTask,
-        contains,
-        addTask,
-        deleteTask,
-        getTasksToday,
-        getTasksThisWeek
-    };
+    // return {
+    //     name,
+    //     setName,
+    //     getName,
+    //     setTasks,
+    //     getTasks,
+    //     findTask,
+    //     contains,
+    //     addTask,
+    //     deleteTask,
+    //     getTasksToday,
+    //     getTasksThisWeek
+    // };
 }
