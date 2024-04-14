@@ -58,6 +58,10 @@ button:hover {
     /* border: 1px solid; */
 }
 
+.project-container {
+    width: 100%;
+}
+
 .sidebar button, .projects button {
     width: 100%;
     background: none;
@@ -77,4 +81,10 @@ button:hover {
     /* border: 1px solid; */
     height: 100%;
     align-items: center;
+}
+
+.task-btn {
+    width: 100%;
+    background: rgb(230, 230, 230);
+    border: none;
 }

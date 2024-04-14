@@ -3,30 +3,35 @@ import Project from './project';
 import Task from './task';
 
 export default class make_UI {
-    addProject(name) {
-        document.querySelector('.projects').innerHTML = 
-        `<h2 class="project-title">
-            Projects
-        </h2>`
-            +
-        `<button class='project-btn' style='width: 100%;'>
-            ${name}
-        </button>` 
-            +
-        `<button class="add-btn" style="font-size: 30px; width: 100%;">+</button>`;
+
+    // create a new project button and switch to this project on clicking 
+    addProject(project) {
+        const projectContainer = document.querySelector('.project-container');
+        const newProject = document.createElement('button');
+        newProject.textContent = project.getName();
+        newProject.classList.add('proj-button');
+        projectContainer.appendChild(newProject);
+        console.log(project.getName());
+        newProject.addEventListener('click', () => {
+            document.querySelector('.task-page').innerHTML = '';
+            this.loadTasks(project);
+        });
+        // this.taskPg;
     };
 
     loadProjects(projects) {
-        const projectContainer = document.querySelector('.projects');
-        projectContainer.innerHTML = 
-        `<h2 class="project-title">
-            Projects
-        </h2>`;
+        const projectContainer = document.querySelector('.project-container');
         for (let project of projects) {
-             projectContainer.innerHTML += 
-            `<button class='project-btn' style='width: 100%;>${project.getName()}</button>`;
+            if (project.getName() === 'Today' || project.getName() === 'This Week') continue;
+            const btn = document.createElement('button');
+            btn.textContent = project.getName();
+            btn.style.width = '100%';
+            btn.addEventListener('click', () => {
+                document.querySelector('.task-page').innerHTML = '';
+                this.loadTasks(project);
+            });
+            projectContainer.appendChild(btn);
         }
-        projectContainer.innerHTML += `<button class="add-btn" style="font-size: 30px; width: 100%;">+</button>`;
     }
 
     // project is a Project()
@@ -37,5 +42,11 @@ export default class make_UI {
             taskPg.innerHTML += 
             `<button class='task-btn'>${task.getName()}</button>`;
         }
+    }
+
+    switchProject(newProject) {
+        console.log(newProject);
+        document.querySelector('.task-page').innerHTML = '';
+        this.loadTasks(newProject);
     }
 };

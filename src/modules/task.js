@@ -1,27 +1,28 @@
-export default function Task(name, dueDate = "None") {
-    this.name = name;
-    this.dueDate = dueDate;
-
-    const setName = function(name) {
+export default class Task {
+    constructor(name, dueDate = "None") {
         this.name = name;
-    };
-    const getName = () => this.name;
-    const setDate = function(date) {
+        this.dueDate = dueDate;
+    }
+
+    setName(name) {
+        this.name = name;
+    }
+
+    getName() {
+        return this.name;
+    }
+
+    setDate(date) {
         this.dueDate = date;
-    };
+    }
 
-    const getDate = () => this.dueDate;
+    getDate() {
+        return this.dueDate
+    }
 
-    const getFormattedDate = function() {
+    getFormattedDate = function() {
         const date = this.dueDate.split('/');
         return `${date[0]}/${date[1]}/${date[2]}`;
-    };
-
-    return {
-        setName,
-        getName,
-        setDate,
-        getDate,
-        getFormattedDate
-    };
-}
+    }
+    
+};
