@@ -30,8 +30,7 @@ export default class make_UI {
         projectContainer.appendChild(btnWrapper);
         console.log(project.getName());
         newProject.addEventListener('click', () => {
-            document.querySelector('.task-page').innerHTML = '';
-            this.loadTasks(project);
+            this.switchProject(project);
         });
         // this.taskPg;
     };
@@ -60,18 +59,17 @@ export default class make_UI {
 
     // project is a Project()
     loadTasks(project) {
-        const taskPg = document.querySelector('.task-page');
-        taskPg.innerHTML = `<h2 class='curr-proj-name'>${project.getName()}</h2>`;
+        const taskContainer = document.querySelector('.tasks-container');
+        document.querySelector('.curr-proj-name').textContent = project.getName();
         for (let task of project.getTasks()) {
-            taskPg.innerHTML += 
+            taskContainer.innerHTML += 
             `<button class='task-btn'>${task.getName()}</button>`;
         }
-        taskPg.innerHTML += `<button class='add-task-btn'>+</button>`;
     }
 
     switchProject(newProject) {
         console.log(newProject);
-        document.querySelector('.task-page').innerHTML = '';
+        document.querySelector('.tasks-container').innerHTML = '';
         this.loadTasks(newProject);
     }
 

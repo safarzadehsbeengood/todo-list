@@ -108,3 +108,31 @@ button:hover {
 .add-task-btn:hover {
     background: var(--btn-hover);
 }
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.proj-input {
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.proj-submit {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    background: rgb(255, 255, 255);
+}

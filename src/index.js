@@ -7,21 +7,13 @@ import { add } from 'date-fns';
 
 const UI = new make_UI();
 const projectList = new List();
-const testProject = new Project("school");
-const testProject2 = new Project("goon");
 
-testProject.addTask(new Task('do homework', '12-24-1992'));
-testProject2.addTask(new Task('all day', '04-24-2024'));
-projectList.addProject(testProject);
-projectList.addProject(testProject2);
-
-UI.loadProjects(projectList.getProjects());
-UI.loadTasks(testProject);
-
-document.querySelector('.add-btn').addEventListener('click', addProjectPopup);
+document.querySelector('.add-btn').addEventListener('click', projectInput);
+document.querySelector('.add-task-btn').addEventListener('click', taskInput);
 
 // make a popup menu to add a project to the project list
-function addProjectPopup() {
+function projectInput() {
+    if (document.querySelector('.popup')) return;
     const popup = document.createElement('div');
     popup.classList.add('popup');
     popup.innerHTML = 
@@ -30,10 +22,34 @@ function addProjectPopup() {
     <button class='proj-submit'>Submit</button>`;
     document.querySelector('.project-container').appendChild(popup);
     document.querySelector('.proj-submit').addEventListener('click', () => {
+        if (document.querySelector('.proj-input').value === '') return;
         const projName = document.querySelector('.proj-input').value;
         const newProject = new Project(projName);
         projectList.addProject(newProject);
         document.querySelector('.project-container').removeChild(popup);
         UI.addProject(newProject);
+    });
+}
+
+function taskInput() {
+    if (document.querySelector('.task-popup')) return;
+    const taskPopup = document.createElement('div');
+    taskPopup.classList.add('task-popup');
+    taskPopup.innerHTML = 
+    `<input type='text' class='task-input
+    ' placeholder='Task Name'>
+    <input type='text' class='date-input
+    ' placeholder='Due Date'>
+    <button class='task-submit'>Submit</button>`;
+    document.querySelector('.task-page').appendChild(taskPopup);
+    document.querySelector('.task-submit').addEventListener('click', () => {
+        if (document.querySelector('.task-input').value === '') return;
+        const taskName = document.querySelector('.task-input').value;
+        const taskDate = document.querySelector('.date-input').value;
+        const newTask = new Task(taskName, taskDate);
+        const currentProject = projectList.getProject(document.querySelector('.curr-proj-name').textContent);
+        currentProject.addTask(newTask);
+        document.querySelector('.task-page').removeChild(taskPopup);
+        UI.loadTasks(currentProject);
     });
 }
