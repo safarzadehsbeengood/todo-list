@@ -85,7 +85,6 @@ button:hover {
 
 .task-btn {
     width: 100%;
-    background: rgb(230, 230, 230);
     border: none;
     font-size: 20px;
 }
@@ -97,4 +96,15 @@ button:hover {
 
 .proj-remove-btn {
     background: rgb(255, 72, 72);
+}
+
+.add-task-btn {
+    width: 100%;
+    border: none;
+    height: 100px;
+    font-size: 30px;
+}
+
+.add-task-btn:hover {
+    background: var(--btn-hover);
 }

@@ -3,6 +3,7 @@ import Task from './modules/task';
 import Project from './modules/project';
 import List from './modules/list';
 import make_UI from './modules/ui';
+import { add } from 'date-fns';
 
 const UI = new make_UI();
 const projectList = new List();
@@ -17,14 +18,22 @@ projectList.addProject(testProject2);
 UI.loadProjects(projectList.getProjects());
 UI.loadTasks(testProject);
 
-let i = 1;
+document.querySelector('.add-btn').addEventListener('click', addProjectPopup);
 
-document.querySelector('.add-btn').onclick = function() {
-    const p = new Project(`clicked ${i}`);
-    projectList.addProject(p);
-    p.addTask(new Task(`bruh ${i}`, '05-22-2095'));
-    i += 1
-    UI.addProject(p);
+// make a popup menu to add a project to the project list
+function addProjectPopup() {
+    const popup = document.createElement('div');
+    popup.classList.add('popup');
+    popup.innerHTML = 
+    `<input type='text' class='proj-input
+    ' placeholder='Project Name'>
+    <button class='proj-submit'>Submit</button>`;
+    document.querySelector('.project-container').appendChild(popup);
+    document.querySelector('.proj-submit').addEventListener('click', () => {
+        const projName = document.querySelector('.proj-input').value;
+        const newProject = new Project(projName);
+        projectList.addProject(newProject);
+        document.querySelector('.project-container').removeChild(popup);
+        UI.addProject(newProject);
+    });
 }
-
-// UI.loadTasks(testProject);

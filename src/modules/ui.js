@@ -66,6 +66,7 @@ export default class make_UI {
             taskPg.innerHTML += 
             `<button class='task-btn'>${task.getName()}</button>`;
         }
+        taskPg.innerHTML += `<button class='add-task-btn'>+</button>`;
     }
 
     switchProject(newProject) {
