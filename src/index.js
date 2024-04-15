@@ -65,6 +65,7 @@ function projectInput() {
 }
 
 function taskInput() {
+    // create a popup menu to add a task to the current project
   const taskPopup = document.createElement("div");
   taskPopup.classList.add("task-popup");
   taskPopup.innerHTML = `<div class='task-input-wrapper'>
@@ -77,8 +78,12 @@ function taskInput() {
             <button class='task-submit'>Submit</button>
             <button class='task-cancel'>Cancel</button>
         </div>`;
+
+    // append the popup to the task page
   document.querySelector(".task-page").appendChild(taskPopup);
+  // hide the add task button
   document.querySelector(".add-task-btn").style.display = "none";
+  // add event listeners to the submit and cancel buttons
   document.querySelector(".task-cancel").addEventListener("click", () => {
     document.querySelector(".task-page").removeChild(taskPopup);
     document.querySelector(".add-task-btn").style.display = "block";
