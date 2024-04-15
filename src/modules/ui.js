@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import Project from './project';
 import Task from './task';
+import List from './list';
 
 export default class make_UI {
 
@@ -9,7 +10,7 @@ export default class make_UI {
         const projectContainer = document.querySelector('.project-container');
         const btnWrapper = document.createElement('div');
 
-        btnWrapper.classList.add('btn-wrapper');
+        btnWrapper.classList.add('proj-btn-wrapper');
 
         const newProject = document.createElement('button');
         const removeBtn = document.createElement('button');
@@ -60,27 +61,30 @@ export default class make_UI {
     // project is a Project()
     loadTasks(project) {
         const taskContainer = document.querySelector('.tasks-container');
+        taskContainer.innerHTML = '';
+        console.log(project.getTasks());
         document.querySelector('.curr-proj-name').textContent = project.getName();
         for (let task of project.getTasks()) {
             taskContainer.innerHTML += 
-            `<button class='task-btn'>${task.getName()}</button>`;
+            `
+            <div class='task-wrapper'>
+                <button class='task-btn'>${task.getName()}</button>
+                <p>Due Date: ${task.getDate()}</p>
+            </div>
+            `;
         }
     }
 
     switchProject(newProject) {
-        console.log(newProject);
         document.querySelector('.tasks-container').innerHTML = '';
         this.loadTasks(newProject);
     }
 
     removeProject(toRemove) {
-        for (const project of document.querySelector('.project-container').querySelectorAll('.btn-wrapper')) {
+        for (const project of document.querySelector('.project-container').querySelectorAll('.proj-btn-wrapper')) {
             const projButton = project.querySelector('.proj-button');
-            console.log(projButton.parentNode);
-            console.log(`${projButton.textContent} === ${toRemove.getName()}`);
             if (projButton.textContent === toRemove.getName()) {
                 document.querySelector('.project-container').removeChild(projButton.parentNode);
-                console.log(projButton.parentNode);
                 break;
             }
         }

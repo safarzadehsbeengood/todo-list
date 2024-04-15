@@ -78,14 +78,4 @@ export default class List {
         );
       };
 
-    // return {
-    //     setProjects,
-    //     getProjects,
-    //     getProject,
-    //     contains,
-    //     addProject,
-    //     deleteProject,
-    //     updateTodayProject,
-    //     updateWeekProject
-    // };
 }

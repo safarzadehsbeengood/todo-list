@@ -53,18 +53,4 @@ export default class Project {
             return isThisWeek(subDays(toDate(taskDate), 1));
         });
     };
-
-    // return {
-    //     name,
-    //     setName,
-    //     getName,
-    //     setTasks,
-    //     getTasks,
-    //     findTask,
-    //     contains,
-    //     addTask,
-    //     deleteTask,
-    //     getTasksToday,
-    //     getTasksThisWeek
-    // };
 }

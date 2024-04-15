@@ -36,12 +36,20 @@ function taskInput() {
     const taskPopup = document.createElement('div');
     taskPopup.classList.add('task-popup');
     taskPopup.innerHTML = 
-    `<input type='text' class='task-input
-    ' placeholder='Task Name'>
-    <input type='text' class='date-input
+    `<div class='task-input-wrapper'>
+        <input type='text' class='task-input
+        ' placeholder='Task Name'>
+        <input type='date' class='date-input
     ' placeholder='Due Date'>
-    <button class='task-submit'>Submit</button>`;
+    </div>
+    <button class='task-submit'>Submit</button>
+    <button class='task-cancel'>Cancel</button>`;
     document.querySelector('.task-page').appendChild(taskPopup);
+    document.querySelector('.add-task-btn').style.display = 'none';
+    document.querySelector('.task-cancel').addEventListener('click', () => {
+        document.querySelector('.task-page').removeChild(taskPopup);
+        document.querySelector('.add-task-btn').style.display = 'block';
+    });
     document.querySelector('.task-submit').addEventListener('click', () => {
         if (document.querySelector('.task-input').value === '') return;
         const taskName = document.querySelector('.task-input').value;
@@ -51,5 +59,6 @@ function taskInput() {
         currentProject.addTask(newTask);
         document.querySelector('.task-page').removeChild(taskPopup);
         UI.loadTasks(currentProject);
+        document.querySelector('.add-task-btn').style.display = 'block';
     });
 }
