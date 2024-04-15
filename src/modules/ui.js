@@ -11,6 +11,7 @@ export default class make_UI {
         const btnWrapper = document.createElement('div');
 
         btnWrapper.classList.add('proj-btn-wrapper');
+        btnWrapper.classList.add(project.getName());
 
         const newProject = document.createElement('button');
         const removeBtn = document.createElement('button');
@@ -18,9 +19,6 @@ export default class make_UI {
         removeBtn.textContent = 'X';
         removeBtn.classList.add('proj-remove-btn');
         removeBtn.style.background = 'pink';
-        removeBtn.addEventListener('click', () => {
-            this.removeProject(project);
-        });
 
         newProject.textContent = project.getName();
         newProject.classList.add('proj-button');
@@ -33,7 +31,6 @@ export default class make_UI {
         newProject.addEventListener('click', () => {
             this.switchProject(project);
         });
-        // this.taskPg;
     };
 
     loadProjects(projects) {
