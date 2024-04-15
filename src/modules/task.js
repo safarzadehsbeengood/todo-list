@@ -1,28 +1,28 @@
+import { format, subMonths } from "date-fns";
+
 export default class Task {
-    constructor(name, dueDate = "None") {
-        this.name = name;
-        this.dueDate = dueDate;
-    }
+  constructor(name, dueDate) {
+    this.name = name;
+    this.dueDate = subMonths(dueDate, 1); // for some reason, date-fns adds one to the month
+  }
 
-    setName(name) {
-        this.name = name;
-    }
+  setName(name) {
+    this.name = name;
+  }
 
-    getName() {
-        return this.name;
-    }
+  getName() {
+    return this.name;
+  }
 
-    setDate(date) {
-        this.dueDate = date;
-    }
+  setDate(date) {
+    this.dueDate = date;
+  }
 
-    getDate() {
-        return this.dueDate
-    }
+  getDate() {
+    return this.dueDate;
+  }
 
-    getFormattedDate = function() {
-        const date = this.dueDate.split('/');
-        return `${date[0]}/${date[1]}/${date[2]}`;
-    }
-    
-};
+  getFormattedDate = function () {
+    return format(this.dueDate, "MM/dd/yyyy");
+  };
+}
