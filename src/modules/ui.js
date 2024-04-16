@@ -22,11 +22,10 @@ export default class make_UI {
     newProject.textContent = project.getName();
     newProject.classList.add("proj-button");
 
-    btnWrapper.appendChild(newProject);
     btnWrapper.appendChild(removeBtn);
+    btnWrapper.appendChild(newProject);
 
     projectContainer.appendChild(btnWrapper);
-    console.log(project.getName());
     newProject.addEventListener("click", () => {
       this.switchProject(project);
     });
@@ -59,7 +58,6 @@ export default class make_UI {
   loadTasks(project) {
     const taskContainer = document.querySelector(".tasks-container");
     taskContainer.innerHTML = "";
-    console.log(project.getTasks());
     document.querySelector(".curr-proj-name").textContent = project.getName();
     for (let task of project.getTasks()) {
       taskContainer.innerHTML += `

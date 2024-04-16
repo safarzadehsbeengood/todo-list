@@ -3,10 +3,17 @@ import Task from "./modules/task";
 import Project from "./modules/project";
 import List from "./modules/list";
 import make_UI from "./modules/ui";
-import { add, format } from "date-fns";
+import { startOfToday } from "date-fns";
 
 const UI = new make_UI();
 const projectList = new List();
+
+// demo
+const proj1 = new Project("Project 1");
+proj1.addTask(new Task("today", startOfToday()));
+proj1.addTask(new Task("tw", new Date(2024, 3, 18)));
+proj1.addTask(new Task("later", new Date(2024, 4, 2)));
+UI.addProject(proj1);
 
 document.querySelector('.add-task-btn').style.display = 'none';
 
@@ -102,7 +109,7 @@ function taskInput() {
       taskName,
       new Date(
         parseInt(formattedDate[0]),
-        parseInt(formattedDate[1]),
+        parseInt(formattedDate[1])-1,
         parseInt(formattedDate[2])
       )
     );

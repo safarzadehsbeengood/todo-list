@@ -3,7 +3,7 @@ import { format, subMonths } from "date-fns";
 export default class Task {
   constructor(name, dueDate) {
     this.name = name;
-    this.dueDate = subMonths(dueDate, 1); // for some reason, date-fns adds one to the month
+    this.dueDate = dueDate;
   }
 
   setName(name) {

@@ -1,5 +1,6 @@
 import Task from "./task";
 import Project from "./project";
+import { compareAsc } from "date-fns";
 
 export default class List {
   constructor() {
@@ -58,7 +59,7 @@ export default class List {
     this.getProject("This Week").tasks = [];
 
     this.projects.forEach((project) => {
-      if (project.getName() !== "Today" || project.getName() !== "This Week") {
+      if (project.getName() !== "Today" && project.getName() !== "This Week") {
         const weekTasks = project.getTasksThisWeek();
         weekTasks.forEach((task) => {
           const taskName = `${task.getName()} (${project.getName()})`;
@@ -72,12 +73,7 @@ export default class List {
     this.getProject("This Week").setTasks(
       this.getProject("This Week")
         .getTasks()
-        .sort((taskA, taskB) =>
-          compareAsc(
-            toDate(new Date(taskA.getDateFormatted())),
-            toDate(new Date(taskB.getDateFormatted()))
-          )
-        )
+        .sort((taskA, taskB) => compareAsc(taskA.getDate(), taskB.getDate()))
     );
   }
 }
