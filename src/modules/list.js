@@ -43,7 +43,7 @@ export default class List {
     this.getProject("Today").tasks = [];
 
     this.projects.forEach((project) => {
-      if (project.getName() !== "Today" || project.getName() !== "This Week") {
+      if (project.getName() !== "Today" && project.getName() !== "This Week") {
         const todayTasks = project.getTasksToday();
         todayTasks.forEach((task) => {
             const taskName = `${task.getName()} (${project.getName()})`;

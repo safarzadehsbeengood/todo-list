@@ -66,8 +66,10 @@ button:hover {
 }
 
 .project-container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    border-top: 3px solid;
+    border-top: 1px solid;
 }
 
 .sidebar button, .projects button {
@@ -143,7 +145,15 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
     
+}
+
+.proj-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    width: 100%;
 }
 
 .proj-remove-btn {
@@ -155,7 +165,7 @@ button:hover {
 }
 
 .proj-input {
-    width: 300px;
+    /* width: 100%; */
     height: 50px;
     font-size: 20px;
     text-align: center;
@@ -163,13 +173,15 @@ button:hover {
 
 .proj-submit-wrapper {
     display: flex;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .proj-submit {
-    width: 100px;
+    /* width: 100px; */
     height: 50px;
     font-size: 20px;
-    background: rgb(141, 244, 116);
+    /* background: rgb(141, 244, 116); */
 }
 
 .task-input, .date-input {

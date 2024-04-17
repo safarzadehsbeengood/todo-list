@@ -13,7 +13,20 @@ const proj1 = new Project("Project 1");
 proj1.addTask(new Task("today", startOfToday()));
 proj1.addTask(new Task("tw", new Date(2024, 3, 18)));
 proj1.addTask(new Task("later", new Date(2024, 4, 2)));
+projectList.addProject(proj1);
 UI.addProject(proj1);
+document
+    .querySelector(`.proj-btn-wrapper.${proj1.getName().replace(/[^a-zA-Z0-9]/g, '')}`)
+    .querySelector(".proj-remove-btn")
+    .addEventListener("click", () => {
+        projectList.deleteProject(proj1.getName());
+        if (
+          document.querySelector(".curr-proj-name").textContent === proj1.getName()
+        ) {
+          document.querySelector(".task-page").innerHTML = "";
+        }
+    UI.removeProject(proj1);
+});
 
 document.querySelector('.add-task-btn').style.display = 'none';
 
@@ -39,8 +52,8 @@ function projectInput() {
         ' placeholder='Project Name'>
     </div>
     <div class='proj-submit-wrapper'>
-        <button class='proj-submit' style='background: green;'>Submit</button>
-        <button class='proj-cancel'>Cancel</button>
+        <button class='proj-submit' style='background: lightgreen;'>Submit</button>
+        <button class='proj-cancel' style='background: lightcoral;'>Cancel</button>
     </div>`;
   document.querySelector(".project-container").appendChild(popup);
   document.querySelector(".add-btn").style.display = "none";
