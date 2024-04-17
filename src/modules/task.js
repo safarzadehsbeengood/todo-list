@@ -1,9 +1,11 @@
-import { format, subMonths } from "date-fns";
+import { format } from "date-fns";
 
 export default class Task {
-  constructor(name, dueDate) {
+  constructor(name, dueDate, priority = 0, notes = "") {
     this.name = name;
     this.dueDate = dueDate;
+    this.priority = priority;
+    this.notes = notes;
   }
 
   setName(name) {
@@ -12,6 +14,22 @@ export default class Task {
 
   getName() {
     return this.name;
+  }
+
+  getPriority() {
+    return this.priority;
+  }
+
+  setPriority(priority) {
+    this.priority = priority;
+  }
+
+  getNotes() {
+    return this.notes;
+  }
+
+  setNotes(notes) {
+    this.notes = notes;
   }
 
   setDate(date) {

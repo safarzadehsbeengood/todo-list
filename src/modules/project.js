@@ -14,6 +14,10 @@ export default class Project {
     return this.name;
   }
 
+  getFormattedName() {
+    return this.name.replace(/[^a-zA-Z0-9]/g, "");
+  }
+
   setTasks(tasks) {
     this.tasks = tasks;
   }

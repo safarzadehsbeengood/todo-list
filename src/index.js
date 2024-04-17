@@ -16,7 +16,7 @@ proj1.addTask(new Task("later", new Date(2024, 4, 2)));
 projectList.addProject(proj1);
 UI.addProject(proj1);
 document
-    .querySelector(`.proj-btn-wrapper.${proj1.getName().replace(/[^a-zA-Z0-9]/g, '')}`)
+    .querySelector(`.proj-btn-wrapper.${proj1.getFormattedName()}`)
     .querySelector(".proj-remove-btn")
     .addEventListener("click", () => {
         projectList.deleteProject(proj1.getName());
@@ -52,8 +52,8 @@ function projectInput() {
         ' placeholder='Project Name'>
     </div>
     <div class='proj-submit-wrapper'>
-        <button class='proj-submit' style='background: lightgreen;'>Submit</button>
-        <button class='proj-cancel' style='background: lightcoral;'>Cancel</button>
+        <button class='proj-submit'></button>
+        <button class='proj-cancel'></button>
     </div>`;
   document.querySelector(".project-container").appendChild(popup);
   document.querySelector(".add-btn").style.display = "none";
@@ -95,8 +95,8 @@ function taskInput() {
         ' placeholder='Due Date'>
         </div>
         <div class='task-submit-cancel-wrapper'>
-            <button class='task-submit'>Submit</button>
-            <button class='task-cancel'>Cancel</button>
+            <button class='task-submit'></button>
+            <button class='task-cancel'></button>
         </div>`;
 
     // append the popup to the task page
@@ -117,7 +117,6 @@ function taskInput() {
     const taskName = document.querySelector(".task-input").value;
     const taskDate = document.querySelector(".date-input").value;
     let formattedDate = taskDate.split("-"); // [year, month, day]
-    console.log(`Date: ${taskDate}`);
     const newTask = new Task(
       taskName,
       new Date(
@@ -133,6 +132,5 @@ function taskInput() {
     document.querySelector(".task-page").removeChild(taskPopup);
     UI.loadTasks(currentProject);
     document.querySelector(".add-task-btn").style.display = "block";
-    console.log(projectList.getProjects());
   });
 }

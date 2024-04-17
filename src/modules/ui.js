@@ -10,14 +10,13 @@ export default class make_UI {
     const btnWrapper = document.createElement("div");
 
     btnWrapper.classList.add("proj-btn-wrapper");
-    btnWrapper.classList.add(project.getName().replace(/[^a-zA-Z0-9]/g, ''));
+    btnWrapper.classList.add(project.getFormattedName());
 
     const newProject = document.createElement("button");
     const removeBtn = document.createElement("button");
 
-    removeBtn.textContent = "X";
+    // removeBtn.textContent = "x";
     removeBtn.classList.add("proj-remove-btn");
-    removeBtn.style.background = "pink";
 
     newProject.textContent = project.getName();
     newProject.classList.add("proj-button");
@@ -27,6 +26,7 @@ export default class make_UI {
 
     projectContainer.appendChild(btnWrapper);
     newProject.addEventListener("click", () => {
+      
       this.switchProject(project);
     });
   }
@@ -63,7 +63,7 @@ export default class make_UI {
       taskContainer.innerHTML += `
             <div class='task-wrapper'>
                 <button class='task-btn'>${task.getName()}</button>
-                <p>Due Date: ${task.getFormattedDate()}</p>
+                <p class='due-date'>${task.getFormattedDate()}</p>
             </div>
             `;
     }
