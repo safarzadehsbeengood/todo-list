@@ -25,7 +25,7 @@ export default class Task {
   }
 
   getPriorityText() {
-    switch (this.priority) {
+    switch (parseInt(this.priority)) {
       case 0:
         return "Low";
       case 1:
@@ -36,7 +36,7 @@ export default class Task {
   }
 
   getPriorityColor() {
-    switch (this.priority) {
+    switch (parseInt(this.priority)) {
       case 0:
         return "green";
       case 1:
