@@ -310,3 +310,11 @@ textarea:focus {
 .task-notes {
     color: gray;
 }
+
+.task-bottom-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}

@@ -98,6 +98,7 @@ function taskInput() {
             <input type='date' class='date-input
         ' placeholder='Due Date'>
         </div>
+      <div class='task-bottom-wrapper'>
         <div class='task-priority-notes-wrapper'>
             <select class='priority-selector'>
                 <option value='2'>High</option>
@@ -110,7 +111,7 @@ function taskInput() {
         <div class='task-submit-cancel-wrapper'>
             <button class='task-submit'></button>
             <button class='task-cancel'></button>
-        </div>`;
+        </div></div>`;
 
   // append the popup to the task page
   document.querySelector(".task-page").appendChild(taskPopup);
