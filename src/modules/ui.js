@@ -63,8 +63,11 @@ export default class make_UI {
       taskContainer.innerHTML += `
             <div class='task-wrapper'>
               <div class='task-closed-wrapper'>
+                <button class='task-remove-btn'>X</button>
                 <button class='task-btn'>${task.getName()}</button>
                 <p class='due-date'>${task.getFormattedDate()}</p>
+                <p class='task-priority'>Priority: ${task.getPriority()}</p>
+                <p class='task-notes'>${task.getNotes()}</p>
               </div>
             </div>
             `;
@@ -73,6 +76,13 @@ export default class make_UI {
       document.querySelector(".add-task-btn").style.display = "none";
     } else {
       document.querySelector(".add-task-btn").style.display = "block";
+    }
+    for (const task of document.querySelectorAll(".task-closed-wrapper")) {
+      task.querySelector('.task-remove-btn').addEventListener("click", () => {
+        const taskName = task.querySelector('.task-btn').textContent;
+        project.deleteTask(taskName);
+        this.removeTask(taskName)
+      });
     }
   }
 
@@ -90,6 +100,16 @@ export default class make_UI {
         document
           .querySelector(".project-container")
           .removeChild(projButton.parentNode);
+        break;
+      }
+    }
+  }
+
+  removeTask(taskName) {
+    const taskContainer = document.querySelector(".tasks-container");
+    for (const taskWrapper of taskContainer.querySelectorAll(".task-wrapper")) {
+      if (taskWrapper.querySelector(".task-btn").textContent === taskName) {
+        taskContainer.removeChild(taskWrapper);
         break;
       }
     }

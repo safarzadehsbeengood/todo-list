@@ -40,7 +40,11 @@ export default class Task {
     return this.dueDate;
   }
 
-  getFormattedDate = function () {
+  getFormattedDate() {
     return format(this.dueDate, "MM/dd/yyyy");
   };
+
+  getFormattedName() {
+    return this.name.replace(/[^a-zA-Z0-9]/g, "");
+  }
 }

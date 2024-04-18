@@ -139,7 +139,9 @@ function taskInput() {
         parseInt(formattedDate[0]),
         parseInt(formattedDate[1]) - 1,
         parseInt(formattedDate[2])
-      )
+      ),
+      taskPriority,
+      taskNotes
     );
     const currentProject = projectList.getProject(
       document.querySelector(".curr-proj-name").textContent
@@ -147,6 +149,13 @@ function taskInput() {
     currentProject.addTask(newTask);
     document.querySelector(".task-page").removeChild(taskPopup);
     UI.loadTasks(currentProject);
+    for (const task of document.querySelectorAll(".task-closed-wrapper")) {
+      task.querySelector('.task-remove-btn').addEventListener("click", () => {
+        const taskName = task.querySelector('.task-btn').textContent;
+        currentProject.deleteTask(taskName);
+        UI.loadTasks(currentProject);
+      });
+    }
     document.querySelector(".add-task-btn").style.display = "block";
   });
 }
