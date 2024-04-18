@@ -48,7 +48,7 @@ export default class List {
         todayTasks.forEach((task) => {
             const taskName = `${task.getName()} (${project.getName()})`;
           this.getProject("Today").addTask(
-            new Task(taskName, task.getDate())
+            new Task(taskName, task.getDate(), task.getPriority(), task.getNotes())
           );
         });
       }
@@ -64,7 +64,7 @@ export default class List {
         weekTasks.forEach((task) => {
           const taskName = `${task.getName()} (${project.getName()})`;
           this.getProject("This Week").addTask(
-            new Task(taskName, task.getDate())
+            new Task(taskName, task.getDate(), task.getPriority(), task.getNotes())
           );
         });
       }
