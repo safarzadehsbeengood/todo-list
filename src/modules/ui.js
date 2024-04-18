@@ -56,6 +56,7 @@ export default class make_UI {
 
   // project is a Project()
   loadTasks(project) {
+    project.sortTasksByPriority();
     const taskContainer = document.querySelector(".tasks-container");
     taskContainer.innerHTML = "";
     document.querySelector(".curr-proj-name").textContent = project.getName();
@@ -64,13 +65,16 @@ export default class make_UI {
             <div class='task-wrapper'>
               <div class='task-closed-wrapper'>
                 <button class='task-remove-btn'>X</button>
-                <button class='task-btn'>${task.getName()}</button>
+                <div class='task-info-wrapper'>
+                  <button class='task-btn'>${task.getName()}</button>
+                  <p class='task-notes'>${task.getNotes()}</p>
+                </div>
                 <p class='due-date'>${task.getFormattedDate()}</p>
-                <p class='task-priority'>Priority: ${task.getPriority()}</p>
-                <p class='task-notes'>${task.getNotes()}</p>
+                <p class='task-priority' style='display: flex; justify-content: center; align-items: center; background: ${task.getPriorityColor()}'>${task.getPriorityText()}</p>
               </div>
             </div>
             `;
+
     }
     if (project.getName() === "Today" || project.getName() === "This Week") {
       document.querySelector(".add-task-btn").style.display = "none";

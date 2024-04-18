@@ -55,4 +55,10 @@ export default class Project {
       return isThisWeek(task.getDate());
     });
   }
+
+  sortTasksByPriority() {
+    this.tasks.sort((a, b) => {
+      return b.getPriority() - a.getPriority();
+    });
+  }
 }

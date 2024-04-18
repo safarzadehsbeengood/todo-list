@@ -115,10 +115,12 @@ button:hover {
     background: rgba(234, 234, 234, 0.409);
     justify-content: center;
     width: 100%;
+    height: 100%;
     align-items: center;
     border: none;
     border-radius: 10px;
     /* font-size: 20px; */
+    /* border-top: 1px solid lightgray; */
     gap: 10px;
 }
 
@@ -272,4 +274,39 @@ button:hover {
 
 textarea:focus {
     outline: none;
+}
+
+.task-remove-btn {
+    height: 100px;
+    width: 40px;
+    background: rgb(255, 134, 134);
+    border: none;
+}
+
+.task-remove-btn:hover {
+    background: rgb(255, 190, 190);
+}
+
+.task-priority {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    margin-right: 10px;
+    font-size: 20px;
+    background: rgba(250, 255, 94, 0.45);
+    border: none;
+}
+
+.task-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.task-notes {
+    color: gray;
 }

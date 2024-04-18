@@ -10,9 +10,9 @@ const projectList = new List();
 
 // demo
 const proj1 = new Project("Project 1");
-proj1.addTask(new Task("today", startOfToday()));
-proj1.addTask(new Task("tw", new Date(2024, 3, 18)));
-proj1.addTask(new Task("later", new Date(2024, 4, 2)));
+proj1.addTask(new Task("today", startOfToday(), 2, "This is due today"));
+proj1.addTask(new Task("tw", new Date(2024, 3, 18), 1, "This is due this week"));
+proj1.addTask(new Task("later", new Date(2024, 4, 2), 0, "This is a note"));
 projectList.addProject(proj1);
 UI.addProject(proj1);
 document
