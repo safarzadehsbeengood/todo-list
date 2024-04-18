@@ -62,8 +62,10 @@ export default class make_UI {
     for (let task of project.getTasks()) {
       taskContainer.innerHTML += `
             <div class='task-wrapper'>
+              <div class='task-closed-wrapper'>
                 <button class='task-btn'>${task.getName()}</button>
                 <p class='due-date'>${task.getFormattedDate()}</p>
+              </div>
             </div>
             `;
     }

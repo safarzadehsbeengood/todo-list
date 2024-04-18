@@ -5,7 +5,7 @@ body {
     margin: 0;
 }
 
-body > *, input, button {
+body > *, input, button, select {
     font-family: "Poppins", monospace;
 }
 
@@ -59,7 +59,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     width: 100%;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
@@ -110,13 +110,14 @@ button:hover {
     border-left: 1px solid;
 }
 
-.task-wrapper {
+.task-closed-wrapper {
     display: flex;
     background: rgba(234, 234, 234, 0.409);
     justify-content: center;
     width: 100%;
     align-items: center;
     border: none;
+    border-radius: 10px;
     /* font-size: 20px; */
     gap: 10px;
 }
@@ -223,7 +224,6 @@ button:hover {
     width: 100px;
     height: 50px;
     font-size: 20px;
-    background: rgb(255, 255, 255);
     background: rgb(240, 120, 120);
     border: none;
 }
@@ -251,4 +251,21 @@ button:hover {
 .task-submit-cancel-wrapper {
     display: flex;
     flex-direction: column;
+}
+
+.priority-selector {
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    background: rgba(250, 255, 94, 0.45);
+    border: none;
+    text-align: center;
+}
+
+.notes-input {
+    width: 100%;
+    height: 100px;
+    font-size: 20px;
+    background: rgba(211, 211, 211, 0.45);
+    border: none;
 }
